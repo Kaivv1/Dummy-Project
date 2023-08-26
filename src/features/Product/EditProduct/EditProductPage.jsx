@@ -49,13 +49,14 @@ const EditProductPage = () => {
     setIsChange(true);
   };
 
-  const onSave = () => {
-    setIsChange(false);
+  const onCancel = () => {
+    setIsChange(!isChange);
   };
 
   console.log(isChange);
   const handleSubmit = (e) => {
     e.preventDefault();
+
     if (
       !title ||
       !category ||
@@ -84,7 +85,7 @@ const EditProductPage = () => {
     console.log(editedProduct);
 
     editProduct(id, editedProduct);
-
+    setIsChange(!isChange);
     // fetch(`${API_URL}/products/${params.productId}`, {
     //   method: 'PUT', /* or PATCH */
     //   headers: { 'Content-Type': 'application/json' },
@@ -145,15 +146,11 @@ const EditProductPage = () => {
         />
       </div>
       <div>
-        {isChange ? (
+        {isChange && (
           <>
-            <button type="submit" onClick={onSave}>
-              Save
-            </button>
-            <button>Cancel</button>
+            <button type="submit">Save</button>
+            <button onClick={onCancel}>Cancel</button>
           </>
-        ) : (
-          ''
         )}
         <Link to={`/products/${id}`}>
           <button>Back</button>
