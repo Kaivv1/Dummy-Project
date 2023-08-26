@@ -1,9 +1,9 @@
-const API_URL = 'https://dummyjson.com';
+export const API_URL = "https://dummyjson.com";
 
 export async function getProducts() {
   const res = await fetch(`${API_URL}/products`);
 
-  if (!res.ok) throw Error('Failed getting the products');
+  if (!res.ok) throw Error("Failed getting the products");
 
   const data = await res.json();
 
@@ -38,8 +38,8 @@ export async function getProductsByName(query) {
 export async function createProduct(newProduct) {
   try {
     const res = await fetch(`${API_URL}/products/add`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newProduct),
     });
 
@@ -49,23 +49,24 @@ export async function createProduct(newProduct) {
     console.log(data);
     return data;
   } catch (err) {
-    throw Error('Failed to create your product');
+    throw Error("Failed to create your product");
   }
 }
 
 export async function editProduct(id, editObj) {
   try {
     const res = await fetch(`${API_URL}/products/${id}`, {
-      method: 'PUT' /* or PATCH */,
-      headers: { 'Content-Type': 'application/json' },
+      method: "PUT" /* or PATCH */,
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(editObj),
     });
 
     if (!res.ok) throw Error();
+    if (res.ok) alert("You have successfully edited the product.");
 
     const data = await res.json();
     console.log(data);
   } catch (err) {
-    throw Error('Failed to edit the product');
+    throw Error("Failed to edit the product");
   }
 }
