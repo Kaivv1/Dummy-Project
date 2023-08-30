@@ -43,12 +43,12 @@ const ProductPage = () => {
     console.log(isDelete);
   };
   return (
-    <div>
+    <div className="p-5">
       <div className="mt-7">
         <LinkButton to={'/products'}> &#129032; Go back</LinkButton>
       </div>
-      <div className="my-28 rounded-xl border-none bg-light p-10 shadow-2xl">
-        <div className="flex">
+      <div className="my-28  rounded-xl border-none bg-light p-10 shadow-2xl">
+        <div className="sm:flex">
           <CarouselDefault images={images} />
           <div className="ml-7 flex flex-col justify-between">
             <div className=" space-y-3">
@@ -62,9 +62,9 @@ const ProductPage = () => {
                 <Rating rating={rating} />
               </div>
             </div>
-            <div className="my-2 lg:flex lg:justify-between">
+            <div className="my-2 md:space-y-5 lg:flex lg:justify-between">
               {stock !== 0 ? (
-                <p className="upper text-base text-green md:text-xl">{`In Stock: ${stock} left`}</p>
+                <p className="upper my-2 text-base text-green md:text-xl lg:my-0">{`In Stock: ${stock} left`}</p>
               ) : (
                 <p className="text-base uppercase text-red/90 md:text-xl">
                   Sold Out
@@ -89,14 +89,14 @@ const ProductPage = () => {
             </div>
             <div className="flex justify-between">
               <Link to={`/products/${id}/edit`}>
-                <button className='disabled:cursor-not-allowed" hover:bg-promo inline-block  rounded-md bg-blue px-2 py-1 text-sm font-semibold uppercase tracking-wide text-light shadow-md transition-colors duration-300 focus:outline-none focus:ring-blue lg:px-4  lg:text-base'>
+                <button className='disabled:cursor-not-allowed" inline-block rounded-md  bg-blue px-2 py-1 text-sm font-semibold uppercase tracking-wide text-light shadow-md transition-colors duration-300 hover:bg-promo focus:outline-none focus:ring-blue lg:px-4  lg:text-base'>
                   Edit
                 </button>
               </Link>
 
               <button
                 onClick={() => setIsDelete(true)}
-                className='disabled:cursor-not-allowed" bg-lightRed focus:ring-lightRed  inline-block rounded-md  px-2 py-1 text-sm font-semibold uppercase tracking-wide text-light shadow-md transition-colors duration-300 hover:bg-red focus:outline-none lg:px-4 lg:text-base'
+                className='disabled:cursor-not-allowed" inline-block rounded-md  bg-lightRed px-2  py-1 text-sm font-semibold uppercase tracking-wide text-light shadow-md transition-colors duration-300 hover:bg-red focus:outline-none focus:ring-lightRed lg:px-4 lg:text-base'
               >
                 Delete
               </button>

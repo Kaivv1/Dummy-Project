@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import '../style/carousel.css';
 export function CarouselDefault({ images }) {
   console.log(images);
   return (
@@ -9,7 +10,7 @@ export function CarouselDefault({ images }) {
       infiniteLoop={true}
       autoPlay={true}
       interval={2000}
-      className="mx-0 w-2/4"
+      className=" w-2/4 sm:m-auto"
     >
       {images &&
         images.map((image, i) => (
