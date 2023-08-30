@@ -1,0 +1,23 @@
+.pagination__link--active {
+  background-color: rgb(212, 212, 212);
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination__link {
+  background-color: #2563eb;
+  padding: 5px 8px;
+  border: none;
+  border-radius: 20px;
+  text-align: center;
+  color: #fafaf9;
+  font-size: 0.9rem;
+}
+
+.pagination__link:hover {
+  background-color: #00008d;
+}

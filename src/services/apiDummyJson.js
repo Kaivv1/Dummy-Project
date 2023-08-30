@@ -1,9 +1,9 @@
-export const API_URL = "https://dummyjson.com";
+export const API_URL = 'https://dummyjson.com';
 
 export async function getProducts() {
   const res = await fetch(`${API_URL}/products`);
 
-  if (!res.ok) throw Error("Failed getting the products");
+  if (!res.ok) throw Error('Failed getting the products');
 
   const data = await res.json();
 
@@ -29,44 +29,75 @@ export async function getProductsByName(query) {
 
   const data = await res.json();
 
-  const { products } = data;
-
-  console.log(products);
-  return products;
+  console.log(data);
 }
 
 export async function createProduct(newProduct) {
   try {
     const res = await fetch(`${API_URL}/products/add`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newProduct),
     });
 
     if (!res.ok) throw Error;
+    if (res.ok) alert('You have successfully listed your new product');
 
-    const { data } = await res.json();
+    const data = await res.json();
     console.log(data);
-    return data;
   } catch (err) {
-    throw Error("Failed to create your product");
+    throw Error('Failed to create your product');
   }
 }
 
 export async function editProduct(id, editObj) {
   try {
     const res = await fetch(`${API_URL}/products/${id}`, {
-      method: "PUT" /* or PATCH */,
-      headers: { "Content-Type": "application/json" },
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(editObj),
     });
 
     if (!res.ok) throw Error();
-    if (res.ok) alert("You have successfully edited the product.");
+    if (res.ok) alert('You have successfully edited the product.');
 
     const data = await res.json();
     console.log(data);
   } catch (err) {
-    throw Error("Failed to edit the product");
+    throw Error('Failed to edit the product');
+  }
+}
+
+export async function deleteProduct(id) {
+  try {
+    const res = await fetch(`${API_URL}/products/${id}`, {
+      method: 'DELETE',
+    });
+
+    if (!res.ok) throw Error();
+    if (res.ok)
+      return alert(
+        'The product has been deleted successfully. Returning to products page..',
+      );
+
+    const data = await res.json();
+
+    console.log(data);
+  } catch (err) {
+    throw Error(`Failed to delete the product: ${err.message}`);
+  }
+}
+
+export async function getProductsByCategory(categoryId) {
+  try {
+    const res = await fetch(`${API_URL}/products/category/${categoryId}`);
+
+    if (!res.ok) throw Error();
+
+    const data = await res.json();
+
+    console.log(data);
+  } catch (err) {
+    throw Error('Failed to get the category products');
   }
 }

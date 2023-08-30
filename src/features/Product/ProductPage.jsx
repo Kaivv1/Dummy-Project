@@ -1,12 +1,17 @@
-import { Link, useLoaderData } from 'react-router-dom';
-import { getProduct } from '../../services/apiDummyJson';
-import Slider from 'react-slick';
+import { Link, useLoaderData, useNavigate } from 'react-router-dom';
+import { deleteProduct, getProduct } from '../../services/apiDummyJson';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import LeftArrow from '../../ui/Arrows/LeftArrow';
-import RightArrow from '../../ui/Arrows/RightArrow';
+import { useState } from 'react';
+import DeleteModal from '../../ui/deleteModal';
+import CarouselDefault from '../../ui/CarouselDefault';
+import Rating from '../../ui/Rating';
+import useDiscountCalculator from '../../services/discountCalc';
+import LinkButton from '../../ui/LinkButton';
 const ProductPage = () => {
   const product = useLoaderData();
+  const [isDelete, setIsDelete] = useState(false);
+  const navigate = useNavigate();
   const {
     title,
     description,
@@ -17,44 +22,90 @@ const ProductPage = () => {
     images,
     rating,
     stock,
+    discountPercentage,
   } = product;
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    prevArrow: <LeftArrow />,
-    nextArrow: <RightArrow />,
+
+  const { calcDiscountPrice } = useDiscountCalculator();
+
+  const discountPrice = calcDiscountPrice(price, discountPercentage);
+
+  const handleDelete = () => {
+    deleteProduct(product.id);
+    setIsDelete(!isDelete);
+
+    setTimeout(() => {
+      navigate('/products');
+    }, 1000);
   };
-  console.log(product);
+
+  const handleCancel = () => {
+    setIsDelete(false);
+    console.log(isDelete);
+  };
   return (
     <div>
-      <Slider {...settings}>
-        {images &&
-          images.map((image, i) => (
-            <div key={i}>
-              <img src={image} alt="" />
+      <div className="mt-7">
+        <LinkButton to={'/products'}> &#129032; Go back</LinkButton>
+      </div>
+      <div className="my-28 rounded-xl border-none bg-light p-10 shadow-2xl">
+        <div className="flex">
+          <CarouselDefault images={images} />
+          <div className="ml-7 flex flex-col justify-between">
+            <div className=" space-y-3">
+              <p className="text-center text-xl font-semibold md:text-2xl lg:text-5xl xl:text-4xl">
+                {title}
+              </p>
+              <div className="space-y-6 md:text-xl xl:text-2xl">
+                <p>From: {brand}</p>
+                <p>Category: {category}</p>
+                <p>Description: {description}</p>
+                <Rating rating={rating} />
+              </div>
             </div>
-          ))}
-      </Slider>
-      <div>
-        <p>{title}</p>
-        <p>{brand}</p>
-        <p>{category}</p>
-        <p>{description}</p>
-      </div>
-      <div>
-        <p>{rating}</p>
-        <p>{stock}</p>
-        <p>{price}</p>
-      </div>
-      <div>
-        <Link to={`/products/${id}/edit`}>
-          <button>Edit</button>
-        </Link>
+            <div className="my-2 lg:flex lg:justify-between">
+              {stock !== 0 ? (
+                <p className="upper text-base text-green md:text-xl">{`In Stock: ${stock} left`}</p>
+              ) : (
+                <p className="text-base uppercase text-red/90 md:text-xl">
+                  Sold Out
+                </p>
+              )}
+              {discountPercentage <= 0 ? (
+                <span className="my-2 text-center text-2xl font-bold text-blue">
+                  {' '}
+                  {price}
+                </span>
+              ) : (
+                <div className="mb-2 flex justify-center space-x-3 text-2xl lg:text-4xl">
+                  {' '}
+                  <span className="  font-normal text-black line-through decoration-red">
+                    {price} $
+                  </span>{' '}
+                  <span className=" font-bold text-blue">
+                    {discountPrice.toFixed(2)} $
+                  </span>
+                </div>
+              )}
+            </div>
+            <div className="flex justify-between">
+              <Link to={`/products/${id}/edit`}>
+                <button className='disabled:cursor-not-allowed" hover:bg-promo inline-block  rounded-md bg-blue px-2 py-1 text-sm font-semibold uppercase tracking-wide text-light shadow-md transition-colors duration-300 focus:outline-none focus:ring-blue lg:px-4  lg:text-base'>
+                  Edit
+                </button>
+              </Link>
 
-        <button>Delete</button>
+              <button
+                onClick={() => setIsDelete(true)}
+                className='disabled:cursor-not-allowed" bg-lightRed focus:ring-lightRed  inline-block rounded-md  px-2 py-1 text-sm font-semibold uppercase tracking-wide text-light shadow-md transition-colors duration-300 hover:bg-red focus:outline-none lg:px-4 lg:text-base'
+              >
+                Delete
+              </button>
+              {isDelete && (
+                <DeleteModal onDelete={handleDelete} onCancel={handleCancel} />
+              )}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

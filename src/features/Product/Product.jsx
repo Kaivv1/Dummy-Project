@@ -1,24 +1,63 @@
 /* eslint-disable react/prop-types */
 
 import { Link } from 'react-router-dom';
+import useDiscountCalculator from '../../services/discountCalc';
 
 const Product = ({ product }) => {
-  const { thumbnail, title, brand, stock, price, id } = product;
+  const { title, brand, stock, price, id, images, discountPercentage } =
+    product;
+
+  const { calcDiscountPrice } = useDiscountCalculator();
+
+  const discountPrice = calcDiscountPrice(price, discountPercentage);
 
   return (
-    <Link to={`/products/${id}`}>
-      <li>
-        <img src={thumbnail} alt={title} />
-        <div>
-          <p>{title}</p>
-          <p>{brand}</p>
-        </div>
-        <div>
-          <p>{stock}</p>
-          <span>{price}</span>
-        </div>
-      </li>
-    </Link>
+    <div className=" flex items-center justify-center ">
+      <Link to={`/products/${id}`}>
+        <li className="hover:scale-104 relative box-border h-auto w-80 rounded-xl border-none bg-lighter p-9 shadow-lg transition-all duration-300 hover:shadow-2xl">
+          <span className="bg-promo text-s absolute left-28 top-0 rounded-b-md  px-1.5 text-light">
+            PROMO -{Math.round(discountPercentage)}%
+          </span>
+          <div className="w-100 h-100">
+            <img
+              src={images[0]}
+              alt={title}
+              className={`w-90 h-50 mx-auto mb-2 object-fill ${
+                stock <= 0 ? 'opacity-70 grayscale' : ''
+              }`}
+            />
+          </div>
+          <div className="mb-5">
+            <p className="mb-2 text-center text-xl font-semibold text-stone_600">{`${title}`}</p>
+            <p className="text-center font-medium text-myVioletDark">{brand}</p>
+          </div>
+          {discountPercentage <= 0 ? (
+            <span className="mb-4 text-center text-2xl font-bold text-blue">
+              {' '}
+              {price}
+            </span>
+          ) : (
+            <div className="mb-4 flex justify-center space-x-3">
+              {' '}
+              <span className="text-2xl font-normal text-black line-through decoration-red">
+                {price} $
+              </span>{' '}
+              <span className="text-2xl font-bold text-blue">
+                {discountPrice.toFixed(2)} $
+              </span>
+            </div>
+          )}
+
+          <div className="text-center">
+            {stock !== 0 ? (
+              <p className="upper text-md text-green">{`In Stock: ${stock} left`}</p>
+            ) : (
+              <p className="text-md uppercase text-red/90">Sold Out</p>
+            )}
+          </div>
+        </li>
+      </Link>
+    </div>
   );
 };
 
