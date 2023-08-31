@@ -14,15 +14,15 @@ const Product = ({ product }) => {
   return (
     <div className=" flex items-center justify-center ">
       <Link to={`/products/${id}`}>
-        <li className="hover:scale-104 relative box-border h-auto w-80 rounded-xl border-none bg-lighter p-9 shadow-lg transition-all duration-300 hover:shadow-2xl">
-          <span className="bg-promo text-s absolute left-28 top-0 rounded-b-md  px-1.5 text-light">
+        <li className="hover:scale-104 relative box-border w-80 rounded-xl border-none bg-lighter p-9 shadow-lg transition-all duration-300 hover:shadow-2xl">
+          <span className="text-s absolute left-28 top-0 rounded-b-md bg-promo  px-1.5 text-light">
             PROMO -{Math.round(discountPercentage)}%
           </span>
-          <div className="w-100 h-100">
+          <div className="">
             <img
               src={images[0]}
               alt={title}
-              className={`w-90 h-50 mx-auto mb-2 object-fill ${
+              className={` mx-auto mb-2 h-60 w-60 object-scale-down ${
                 stock <= 0 ? 'opacity-70 grayscale' : ''
               }`}
             />
