@@ -28,7 +28,7 @@ const Header = () => {
       </button>
 
       {isDropDown && (
-        <div className="absolute right-0 top-16 mt-2 flex flex-col space-y-2 rounded-md border border-blue  bg-darker p-2 text-base font-medium text-lighter shadow-md md:hidden">
+        <div className="absolute right-0 top-16 z-20 mt-2 flex flex-col space-y-2 rounded-md border  border-blue bg-darker p-2 text-base font-medium text-lighter shadow-md md:hidden">
           <Link
             to="/"
             className="block hover:underline hover:underline-offset-2"
