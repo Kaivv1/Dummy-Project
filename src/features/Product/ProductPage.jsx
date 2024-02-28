@@ -3,7 +3,7 @@ import { deleteProduct, getProduct } from '../../services/apiDummyJson';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { useState } from 'react';
-import DeleteModal from '../../ui/deleteModal';
+import DeleteModal from '../../ui/DeleteModal';
 import CarouselDefault from '../../ui/CarouselDefault';
 import Rating from '../../ui/Rating';
 import useDiscountCalculator from '../../services/discountCalc';
@@ -40,7 +40,6 @@ const ProductPage = () => {
 
   const handleCancel = () => {
     setIsDelete(false);
-    console.log(isDelete);
   };
   return (
     <div className="p-5">
