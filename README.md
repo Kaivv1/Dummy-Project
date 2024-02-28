@@ -1,11 +1,13 @@
-# React + Vite
+# Dummy-project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+This project utilizes a dummy JSON API for handling AJAX calls. The dummy API is designed to simulate various HTTP responses and behaviors. Please note the following details:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Important Note
+
+- The dummy JSON API used in this project is intended for testing and development purposes only.
+- For PUT and DELETE requests, the API will respond with the appropriate status in the browser network tab, simulating the behavior without affecting actual data.
 
 ## Responsive for all devices
 
