@@ -1,3 +1,4 @@
+/*eslint-disable react-refresh/only-export-components */
 import { Link, useLoaderData, useNavigate } from 'react-router-dom';
 import { deleteProduct, getProduct } from '../../services/apiDummyJson';
 import 'slick-carousel/slick/slick.css';
