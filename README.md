@@ -1,4 +1,4 @@
-# Dummy-project
+# Dummy-Project
 
 ## Overview
 
