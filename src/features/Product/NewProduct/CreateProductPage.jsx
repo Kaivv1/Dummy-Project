@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { createProduct } from '../../../services/apiDummyJson';
 import { useNavigate } from 'react-router-dom';
 import LinkButton from '../../../ui/LinkButton';
-// import Button from '../../../ui/Button';
 const CreateProductPage = () => {
   const [images, setImages] = useState([]);
   const [thumbNailName, setThumbNailName] = useState('');
@@ -188,7 +187,7 @@ const CreateProductPage = () => {
           <div className="p-4">
             <button
               disabled={isSubmitting}
-              className='disabled:cursor-not-allowed" hover:bg-darkGreen   inline-block rounded-md  bg-green px-2 py-2 text-sm font-semibold uppercase tracking-wide text-light shadow-md transition-colors duration-300 focus:outline-none focus:ring-green lg:px-4 lg:text-base'
+              className='disabled:cursor-not-allowed" inline-block   rounded-md bg-green  px-2 py-2 text-sm font-semibold uppercase tracking-wide text-light shadow-md transition-colors duration-300 hover:bg-darkGreen focus:outline-none focus:ring-green lg:px-4 lg:text-base'
             >
               {isSubmitting ? 'Listing product....' : 'List product'}
             </button>
