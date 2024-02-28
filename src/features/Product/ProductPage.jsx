@@ -5,7 +5,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import { useState } from 'react';
 import CarouselDefault from '../../ui/CarouselDefault';
 import Rating from '../../ui/Rating';
-import useDiscountCalculator from '../../services/discountCalc';
+import useDiscountCalculator from '../../services/useDiscountCalc';
 import LinkButton from '../../ui/LinkButton';
 import DeleteModal from '../../ui/ConfirmDeleteModal';
 
