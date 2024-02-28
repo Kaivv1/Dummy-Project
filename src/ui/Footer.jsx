@@ -1,11 +1,11 @@
 /* eslint-disable react/prop-types */
 import { Link } from 'react-router-dom';
-import Tailwind from './FooterSVGS/Tailwind';
-import React from './FooterSVGS/React';
-import Redux from './FooterSVGS/Redux';
-import Insta from './FooterSVGS/Insta';
-import Github from './FooterSVGS/github';
-import Linked from './FooterSVGS/Linked';
+import Tailwind from './FooterSVGS/TailwindSVG';
+import React from './FooterSVGS/ReactSVG';
+import Redux from './FooterSVGS/ReduxSVG';
+import Insta from './FooterSVGS/InstaSVG';
+import Github from './FooterSVGS/GithubSVG';
+import Linked from './FooterSVGS/LinkedSVG';
 const Footer = () => {
   return (
     <footer className="flex items-center justify-between bg-dark px-1 py-1 text-lighter sm:px-6 md:px-2 md:py-2 lg:px-3 lg:py-3 ">
