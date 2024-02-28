@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 
 import { Link } from 'react-router-dom';
-import useDiscountCalculator from '../../services/discountCalc';
+import useDiscountCalculator from '../../services/useDiscountCalc';
 
 const Product = ({ product }) => {
   const { title, brand, stock, price, id, images, discountPercentage } =
