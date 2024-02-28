@@ -3,11 +3,12 @@ import { deleteProduct, getProduct } from '../../services/apiDummyJson';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { useState } from 'react';
-import DeleteModal from '../../ui/DeleteModal';
 import CarouselDefault from '../../ui/CarouselDefault';
 import Rating from '../../ui/Rating';
 import useDiscountCalculator from '../../services/discountCalc';
 import LinkButton from '../../ui/LinkButton';
+import DeleteModal from '../../ui/ConfirmDeleteModal';
+
 const ProductPage = () => {
   const product = useLoaderData();
   const [isDelete, setIsDelete] = useState(false);
