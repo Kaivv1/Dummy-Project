@@ -31,13 +31,13 @@ const ProductsPage = () => {
   const displayedProducts = products.slice(offset, offset + itemsPerPage);
 
   return (
-    <>
+    <div className="flex flex-col items-center justify-center px-4 pb-12">
       <SearchProductCategory />
-      <ul className="grid grid-cols-1 gap-10  md:grid-cols-2  xl:grid-cols-3 ">
+      <ul className="grid w-fit grid-cols-[1fr] gap-10 md:grid-cols-2 xl:grid-cols-3">
         {displayedProducts.map((product) => (
           <Product key={product.id} product={product} />
         ))}
-      </ul>{' '}
+      </ul>
       <ReactPaginate
         previousLabel={'Previous Page'}
         nextLabel={'Next Page'}
@@ -52,13 +52,8 @@ const ProductsPage = () => {
         marginPagesDisplayed={1}
         className="my-10 flex justify-center space-x-3 font-medium"
       />
-    </>
+    </div>
   );
 };
-
-export async function loader() {
-  const products = await getProducts();
-  return products;
-}
 
 export default ProductsPage;

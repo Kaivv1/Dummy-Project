@@ -17,7 +17,10 @@ const CreateUser = () => {
     navigate('/products');
   };
   return (
-    <form onSubmit={handleSubmit}>
+    <form
+      onSubmit={handleSubmit}
+      className="flex flex-col items-center justify-center"
+    >
       <p className="mb-4 text-sm font-medium text-dark/80 md:text-base lg:font-semibold xl:text-lg">
         Let&apos;s start by telling me your name:
       </p>
@@ -27,7 +30,7 @@ const CreateUser = () => {
         placeholder="Your first name"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
-        className="homeInput w-42 mb-8 shadow-sm focus:w-52 sm:w-72 sm:focus:w-80"
+        className="homeInput mb-8 w-52 shadow-sm focus:w-64 sm:w-72 sm:focus:w-80"
       />
       {username !== '' && (
         <div>

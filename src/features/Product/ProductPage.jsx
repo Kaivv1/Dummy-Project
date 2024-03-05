@@ -1,6 +1,6 @@
 /*eslint-disable react-refresh/only-export-components */
 import { Link, useLoaderData, useNavigate } from 'react-router-dom';
-import { deleteProduct, getProduct } from '../../services/apiDummyJson';
+import { deleteProduct } from '../../services/apiDummyJson';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { useState } from 'react';
@@ -44,19 +44,20 @@ const ProductPage = () => {
     setIsDelete(false);
   };
   return (
-    <div className="p-5">
-      <div className="mt-7">
+    <div className="flex flex-col items-center justify-center px-4 pb-12 ">
+      <div className="my-7 flex w-full justify-start">
         <LinkButton to={'/products'}> &#129032; Go back</LinkButton>
       </div>
-      <div className="my-28  rounded-xl border-none bg-light p-10 shadow-2xl">
-        <div className="sm:flex">
+
+      <div className="md:px-0 lg:px-16 xl:px-36 2xl:px-80">
+        <div className="rounded-xl border-none bg-light p-5 shadow-2xl sm:flex sm:p-10">
           <CarouselDefault images={images} />
-          <div className="ml-7 flex flex-col justify-between">
-            <div className=" space-y-3">
+          <div className="flex flex-col justify-between sm:ml-7">
+            <div className="space-y-3">
               <p className="text-center text-xl font-semibold md:text-2xl lg:text-5xl xl:text-4xl">
                 {title}
               </p>
-              <div className="space-y-6 md:text-xl xl:text-2xl">
+              <div className="space-y-2 md:space-y-6 md:text-xl xl:text-2xl">
                 <p>From: {brand}</p>
                 <p>Category: {category}</p>
                 <p>Description: {description}</p>
@@ -113,8 +114,3 @@ const ProductPage = () => {
 };
 
 export default ProductPage;
-
-export async function loader({ params }) {
-  const product = await getProduct(params.productId);
-  return product;
-}

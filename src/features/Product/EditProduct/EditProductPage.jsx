@@ -57,8 +57,8 @@ const EditProductPage = () => {
   };
 
   return (
-    <div>
-      <div className="mt-7">
+    <div className="flex flex-col items-center justify-center px-4 pb-12">
+      <div className="my-7 flex w-full justify-start">
         <LinkButton to={`/products/${id}`}>
           &#129032; Back to product
         </LinkButton>
@@ -66,116 +66,114 @@ const EditProductPage = () => {
       <form
         onSubmit={handleSubmit}
         onChange={onChange}
-        className="my-12 flex flex-col items-center justify-center"
+        className="flex w-full flex-col items-center justify-center space-y-4"
       >
-        <div className="flex flex-col items-center justify-center space-y-4">
-          <label htmlFor="title" className="md:text-lg xl:text-xl">
-            Title:
-          </label>
-          <input
-            required
-            type="text"
-            name="title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            className="formInput"
-          />
+        <label htmlFor="title" className="md:text-lg xl:text-xl">
+          Title:
+        </label>
+        <input
+          required
+          type="text"
+          name="title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          className="formInput"
+        />
 
-          <label htmlFor="brand" className="md:text-lg xl:text-xl">
-            Brand:
-          </label>
-          <input
-            required
-            type="text"
-            name="brand"
-            value={brand}
-            onChange={(e) => setBrand(e.target.value)}
-            className="formInput"
-          />
+        <label htmlFor="brand" className="md:text-lg xl:text-xl">
+          Brand:
+        </label>
+        <input
+          required
+          type="text"
+          name="brand"
+          value={brand}
+          onChange={(e) => setBrand(e.target.value)}
+          className="formInput"
+        />
 
-          <label htmlFor="category" className="md:text-lg xl:text-xl">
-            Category:
-          </label>
-          <input
-            required
-            type="text"
-            name="category"
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
-            className="formInput"
-          />
+        <label htmlFor="category" className="md:text-lg xl:text-xl">
+          Category:
+        </label>
+        <input
+          required
+          type="text"
+          name="category"
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
+          className="formInput"
+        />
 
-          <label htmlFor="description" className="md:text-lg xl:text-xl">
-            Description:
-          </label>
-          <textarea
-            type="text"
-            name="description"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            className="remove-arrow formInput h-32 resize-none  overflow-auto rounded-xl"
-          ></textarea>
+        <label htmlFor="description" className="md:text-lg xl:text-xl">
+          Description:
+        </label>
+        <textarea
+          type="text"
+          name="description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          className="remove-arrow formInput h-32 resize-none  overflow-auto rounded-xl"
+        ></textarea>
 
-          <label htmlFor="rating" className="md:text-lg xl:text-xl">
-            Rating
-          </label>
-          <input
-            required
-            type="text"
-            name="number"
-            value={rating}
-            onChange={(e) => setRating(e.target.value)}
-            className="formInput remove-arrow"
-          />
+        <label htmlFor="rating" className="md:text-lg xl:text-xl">
+          Rating
+        </label>
+        <input
+          required
+          type="text"
+          name="number"
+          value={rating}
+          onChange={(e) => setRating(e.target.value)}
+          className="formInput remove-arrow"
+        />
 
-          <label htmlFor="discountPercentage" className="md:text-lg xl:text-xl">
-            Discount percentage:
-          </label>
-          <input
-            required
-            type="number"
-            name="discountPercentage"
-            value={discountPercentage}
-            onChange={(e) => setDiscountPercentage(e.target.value)}
-            className="formInput remove-arrow"
-          />
+        <label htmlFor="discountPercentage" className="md:text-lg xl:text-xl">
+          Discount percentage:
+        </label>
+        <input
+          required
+          type="number"
+          name="discountPercentage"
+          value={discountPercentage}
+          onChange={(e) => setDiscountPercentage(e.target.value)}
+          className="formInput remove-arrow"
+        />
 
-          <label htmlFor="stock" className="md:text-lg xl:text-xl">
-            Stock:
-          </label>
-          <input
-            required
-            type="number"
-            name="stock"
-            value={stock}
-            onChange={(e) => setStock(e.target.value)}
-            className="formInput remove-arrow"
-          />
+        <label htmlFor="stock" className="md:text-lg xl:text-xl">
+          Stock:
+        </label>
+        <input
+          required
+          type="number"
+          name="stock"
+          value={stock}
+          onChange={(e) => setStock(e.target.value)}
+          className="formInput remove-arrow"
+        />
 
-          <label htmlFor="price" className="md:text-lg xl:text-xl">
-            Price:
-          </label>
-          <input
-            required
-            type="number"
-            name="price"
-            value={price}
-            onChange={(e) => setPrice(e.target.value)}
-            className="formInput remove-arrow"
-          />
-        </div>
+        <label htmlFor="price" className="md:text-lg xl:text-xl">
+          Price:
+        </label>
+        <input
+          required
+          type="number"
+          name="price"
+          value={price}
+          onChange={(e) => setPrice(e.target.value)}
+          className="formInput remove-arrow"
+        />
         <div>
           {isChange && (
             <div className="my-6 space-x-4">
               <button
                 type="submit"
-                className='disabled:cursor-not-allowed" hover:bg-darkGreen inline-block  rounded-md bg-green  px-2 py-1 text-sm font-semibold uppercase tracking-wide text-light shadow-md transition-colors duration-300 focus:outline-none focus:ring-green lg:px-4 lg:text-base'
+                className='disabled:cursor-not-allowed" inline-block rounded-md  bg-green px-2  py-1 text-sm font-semibold uppercase tracking-wide text-light shadow-md transition-colors duration-300 hover:bg-darkGreen focus:outline-none focus:ring-green lg:px-4 lg:text-base'
               >
                 Save
               </button>
               <button
                 onClick={onCancel}
-                className='disabled:cursor-not-allowed" bg-lightRed focus:ring-lightRed  inline-block rounded-md  px-2 py-1 text-sm font-semibold uppercase tracking-wide text-light shadow-md transition-colors duration-300 hover:bg-red focus:outline-none lg:px-4 lg:text-base'
+                className='disabled:cursor-not-allowed" inline-block rounded-md  bg-lightRed px-2  py-1 text-sm font-semibold uppercase tracking-wide text-light shadow-md transition-colors duration-300 hover:bg-red focus:outline-none focus:ring-lightRed lg:px-4 lg:text-base'
               >
                 Cancel
               </button>

@@ -96,7 +96,7 @@ export async function getProductsByCategory(categoryId) {
 
     const data = await res.json();
 
-    console.log(data);
+    return data;
   } catch (err) {
     throw Error('Failed to get the category products');
   }

@@ -29,15 +29,14 @@ const SearchProductCategory = () => {
       onSubmit={handleSubmit}
       onChange={(e) => setSelectedCategory(e.target.value)}
       value={selectedCategory}
-      className="mb-20 mt-12 flex flex-col items-center justify-center"
+      className="mb-20 mt-12 flex flex-col items-center justify-center gap-2"
     >
       <label
         htmlFor="selector"
-        className="text-xl font-medium text-stone_700 sm:text-2xl lg:text-3xl"
+        className="text-center text-xl font-medium text-stone_700 sm:text-2xl lg:text-3xl"
       >
         Search products by category
       </label>
-      <br />
       <div className="mt-2 flex items-center justify-center">
         <select
           name="selector"
